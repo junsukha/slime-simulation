@@ -3,6 +3,8 @@
 
 #include <SFML/Graphics.hpp>
 
+#include "trail.hpp"
+
 class Particle {
 private:
     sf::CircleShape shape;
@@ -16,7 +18,7 @@ public:
     Particle(float x, float y, float agnle, float step);
 
     void draw(sf::RenderWindow &window);
-    void update();
+    void update(TrailMap & trail);
 
     sf::Vector2f getPosition() const;
 };
