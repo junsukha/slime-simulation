@@ -12,6 +12,7 @@ set(SOURCES
     src/particle.cpp
     src/cell.cpp
     src/trail.cpp
+    src/sensor.cpp
 )
 
 set(HEADERS
@@ -19,6 +20,7 @@ set(HEADERS
     include/particle.hpp
     include/cell.hpp
     include/trail.hpp
+    include/sensor.hpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES})

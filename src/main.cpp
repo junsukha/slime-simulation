@@ -16,8 +16,8 @@ int main() {
     std::vector<Particle> particles;
     particles.reserve(NUM_PARTICLES);
     for (int i = 0; i < NUM_PARTICLES; i++) {
-        float start_x = WINDOW_WIDTH/2;
-        float start_y = WINDOW_HEIGHT/2;
+        float start_x = static_cast<float>(std::rand() % WINDOW_WIDTH);
+        float start_y = static_cast<float>(std::rand() % WINDOW_HEIGHT);
 
         float heading_angle = static_cast<float>(std::rand() % 360);
 
@@ -34,6 +34,7 @@ int main() {
         }
 
         for (auto & p : particles) {
+            p.senseAndTurn(trailMap);
             p.update(trailMap);
         }
 
