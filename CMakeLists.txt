@@ -11,12 +11,14 @@ set(SOURCES
     src/main.cpp
     src/particle.cpp
     src/cell.cpp
+    src/trail.cpp
 )
 
 set(HEADERS
     include/const.hpp
     include/particle.hpp
     include/cell.hpp
+    include/trail.hpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES})

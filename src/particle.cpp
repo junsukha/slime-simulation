@@ -1,6 +1,7 @@
 #include <cmath>
 
 #include "particle.hpp"
+#include "trail.hpp"
 #include "const.hpp"
 
 Particle::Particle(float x, float y, float angle, float step)
@@ -21,7 +22,7 @@ void Particle::draw(sf::RenderWindow &window) {
     window.draw(shape);
 }
 
-void Particle::update() {
+void Particle::update(TrailMap& trail) {
     position += velocity;
 
     // wrapping on the edges
@@ -33,6 +34,10 @@ void Particle::update() {
         position.y += WINDOW_HEIGHT;
     else if (position.y >= WINDOW_HEIGHT)
         position.y -= WINDOW_HEIGHT;
+
+    int px = static_cast<int>(position.x);
+    int py = static_cast<int>(position.y);
+    trail.addTrail(px, py, DEPOSIT_AMOUNT);
 }
 
 sf::Vector2f Particle::getPosition() const {
