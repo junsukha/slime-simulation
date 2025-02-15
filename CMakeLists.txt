@@ -10,11 +10,13 @@ find_package(SFML 2.5 REQUIRED COMPONENTS graphics window system)
 set(SOURCES
     src/main.cpp
     src/particle.cpp
+    src/cell.cpp
 )
 
 set(HEADERS
     include/const.hpp
     include/particle.hpp
+    include/cell.hpp
 )
 
 add_executable(${PROJECT_NAME} ${SOURCES})
