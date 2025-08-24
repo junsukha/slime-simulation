@@ -1,0 +1,12 @@
+{
+  "dependencies": [
+    "sfml"
+  ],
+  "builtin-baseline": "4bb07a326d9b9bce3703272a509e5bc25dd9cfd5",
+  "overrides": [
+    {
+    "name": "sfml",
+    "version": "3.0.0"
+    }
+    ]
+}
