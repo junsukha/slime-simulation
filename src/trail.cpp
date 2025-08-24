@@ -2,13 +2,29 @@
 #include "const.hpp"
 #include "cell.hpp"
 
-TrailMap::TrailMap(int w, int h)
-    : width(w), height(h), cells(w * h) {
+// TrailMap::TrailMap(int w, int h)
+//     : width(w), height(h), cells(w * h) {
 
-    image.create(w, h, sf::Color::Black);
+//     image.create(w, h, sf::Color::Black);
+//     texture.loadFromImage(image);
+//     sprite.setTexture(texture);
+// }
+
+TrailMap::TrailMap(int w, int h)
+    : width(w), height(h), cells(w * h), sprite(texture), image({static_cast<unsigned int>(w), static_cast<unsigned int>(h)}, sf::Color::Black) {
+
+    // image({w, h}, sf::Color::Black);
     texture.loadFromImage(image);
     sprite.setTexture(texture);
 }
+// TrailMap::TrailMap(int w, int h)
+// : sprite(texture) // must initialize here in SFML 3
+// {
+//     image({w, h}, sf::Color::Black);
+//     if (!texture.loadFromImage(image)) {
+//         throw std::runtime_error("Failed to load texture from image");
+//     }
+// }
 
 void TrailMap::addTrail(int x, int y, float amount) {
     if (x >= 0 && x < width && y >= 0 && y < height) {
@@ -28,7 +44,11 @@ void TrailMap::updateTexture() {
         for (int x = 0; x < width; x++) {
             int index = y * width + x;
             float val = cells[index].getIntensity();
-            image.setPixel(x, y, sf::Color(val, val, val));
+            // image.setPixel(x, y, sf::Color(val, val, val));
+            // image.setPixel({x, y}, sf::Color(val, val, val));
+            image.setPixel(sf::Vector2u(static_cast<unsigned>(x),
+                            static_cast<unsigned>(y)),
+            sf::Color(val, val, val));
         }
     }
 

@@ -5,7 +5,7 @@ project(main VERSION 1.0)
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
-find_package(SFML 2.5 REQUIRED COMPONENTS graphics window system)
+find_package(SFML 3 REQUIRED COMPONENTS Graphics Window System)
 
 set(SOURCES
     src/main.cpp
@@ -27,7 +27,7 @@ add_executable(${PROJECT_NAME} ${SOURCES})
 
 target_include_directories(${PROJECT_NAME} PRIVATE ${SFML_INCLUDE_DIRS} include)
 
-target_link_libraries(${PROJECT_NAME} sfml-graphics sfml-window sfml-system)
+target_link_libraries(${PROJECT_NAME} SFML::Graphics SFML::Window SFML::System)
 
 if (UNIX AND NOT APPLE)
     set(CMAKE_INSTALL_RPATH ${SFML_LIBRARIES})

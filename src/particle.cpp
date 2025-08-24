@@ -13,7 +13,8 @@ Particle::Particle(float x, float y, float angle, float step)
 
     shape.setRadius(PARTICLE_RADIUS);
     shape.setFillColor(sf::Color::White);
-    shape.setOrigin(PARTICLE_RADIUS, PARTICLE_RADIUS);
+    // shape.setOrigin(PARTICLE_RADIUS, PARTICLE_RADIUS);
+    shape.setOrigin(sf::Vector2f(PARTICLE_RADIUS, PARTICLE_RADIUS));
 
     angle_radians = angle * M_PI / 180.0f;
 

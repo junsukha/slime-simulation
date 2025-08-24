@@ -5,8 +5,10 @@
 #include "const.hpp"
 
 int main() {
-    sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT),
-                            "Slime Simulation");
+    // sf::RenderWindow window(sf::VideoMode(WINDOW_WIDTH, WINDOW_HEIGHT),
+                            // "Slime Simulation");
+    sf::RenderWindow window(sf::VideoMode({WINDOW_WIDTH, WINDOW_HEIGHT}), "Slime Simulation");
+    
     window.setFramerateLimit(60);
 
     float step_size = 1.0f;
@@ -26,12 +28,18 @@ int main() {
 
     while (window.isOpen())
     {
-        sf::Event event;
-        while (window.pollEvent(event)) {
-            if (event.type == sf::Event::Closed) {
+        // sf::Event event;
+        // while (window.pollEvent(event)) {
+        //     if (event.type == sf::Event::Closed) {
+        //         window.close();
+        //     }
+        // }
+        while (auto event = window.pollEvent()) {
+            if (event->is<sf::Event::Closed>()) {
                 window.close();
             }
         }
+
 
         for (auto & p : particles) {
             p.senseAndTurn(trailMap);
